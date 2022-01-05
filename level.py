@@ -8,6 +8,7 @@ class Level:
         self.tiles_sprite_group = pygame.sprite.Group()
         self.display_surface = surface
         self.level_building(level_map_data)
+        self.map_shift = 0
 
     def level_building(self, map_data):
         for row_index, row in enumerate(map_data):
@@ -19,4 +20,5 @@ class Level:
                     self.tiles_sprite_group.add(tile)
 
     def run(self):
+        self.tiles_sprite_group.update(self.map_shift)
         self.tiles_sprite_group.draw(self.display_surface)

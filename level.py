@@ -1,6 +1,6 @@
 import pygame
 from levels_tiles import Tile
-from level_info import tile_size
+from level_info import tile_size, SCREEN_WIDTH
 from player import Player
 
 
@@ -23,6 +23,20 @@ class Level:
                 if column == 'P':
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
+
+    def camera_scroll(self):
+        player = self.player.sprite
+        player_x = player.rect.centerx
+        direction_x = player.direction.x
+        if player_x < (SCREEN_WIDTH / 4) and direction_x < 0:
+            self.map_shift = 8
+            player.speed = 0
+        elif player_x > SCREEN_WIDTH - (SCREEN_WIDTH / 4) and direction_x > 0:
+            self.map_shift = -8
+            player.speed = 0
+        else:
+            self.map_shift = 0
+            player.speed = 8
 
     def vertical_move(self):
         player = self.player.sprite
@@ -53,3 +67,4 @@ class Level:
         self.horizontal_move()
         self.vertical_move()
         self.player.draw(self.display_surface)
+        self.camera_scroll()

@@ -1,12 +1,15 @@
 import sys
 import pygame
+from level_info import *
+from level import Level
 
 pygame.init()
 BLACK = (0, 0, 0)
-WIDTH, HEIGHT = 1200, 700
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 FPS = 60
+level = Level(level_map, screen)
+
 
 while True:
     for event in pygame.event.get():
@@ -17,3 +20,4 @@ while True:
     screen.fill(BLACK)
     pygame.display.update()
     clock.tick(FPS)
+    level.run()

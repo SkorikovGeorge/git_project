@@ -30,10 +30,10 @@ class Level:
         for sprite in self.tiles_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.y < 0:
-                    player.rect.top = player.rect.bottom
+                    player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
                 elif player.direction.y > 0:
-                    player.rect.bottom = player.rect.top
+                    player.rect.bottom = sprite.rect.top
                     player.direction.y = 0
 
     def horizontal_move(self):
@@ -42,9 +42,9 @@ class Level:
         for sprite in self.tiles_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.x < 0:
-                    player.rect.left = player.rect.right
+                    player.rect.left = sprite.rect.right
                 elif player.direction.x > 0:
-                    player.rect.right = player.rect.left
+                    player.rect.right = sprite.rect.left
 
     def run(self):
         self.tiles_sprite_group.update(self.map_shift)

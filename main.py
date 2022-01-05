@@ -18,6 +18,7 @@ while True:
             sys.exit()
 
     screen.fill(BLACK)
-    pygame.display.update()
-    clock.tick(FPS)
     level.run()
+    clock.tick(FPS)
+    pygame.display.update()
+

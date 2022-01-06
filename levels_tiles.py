@@ -8,5 +8,8 @@ class Tile(pygame.sprite.Sprite):
         self.image.fill((152, 251, 152))
         self.rect = self.image.get_rect(topleft=position)
 
-    def update(self, x_shift):
-        self.rect.x += x_shift
+    def update(self, shift, direction):
+        if direction == 'x':
+            self.rect.x += shift
+        elif direction == 'y':
+            self.rect.y += shift

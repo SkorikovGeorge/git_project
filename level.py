@@ -40,15 +40,13 @@ class Level:
 
     def vertical_move(self):
         player = self.player.sprite
-        player.add_gravity()
+        player.rect.y += player.direction.y * player.speed
         for sprite in self.tiles_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.y < 0:
                     player.rect.top = sprite.rect.bottom
-                    player.direction.y = 0
                 elif player.direction.y > 0:
                     player.rect.bottom = sprite.rect.top
-                    player.direction.y = 0
 
     def horizontal_move(self):
         player = self.player.sprite

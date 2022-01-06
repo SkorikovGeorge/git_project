@@ -8,7 +8,8 @@ class Player(pygame.sprite.Sprite):
         self.image.fill('violet')
         self.rect = self.image.get_rect(topleft=pos)
         self.direction = pygame.math.Vector2(0, 0)
-        self.speed = 8
+        self.speed_x = 8
+        self.speed_y = 8
 
     def moving(self):
         keys = pygame.key.get_pressed()

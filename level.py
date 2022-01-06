@@ -31,13 +31,13 @@ class Level:
         direction_x = player.direction.x
         if player_x < (SCREEN_WIDTH / 4) and direction_x < 0:
             self.map_shift_x = 8
-            player.speed = 0
+            player.speed_x = 0
         elif player_x > SCREEN_WIDTH - (SCREEN_WIDTH / 4) and direction_x > 0:
             self.map_shift_x = -8
-            player.speed = 0
+            player.speed_x = 0
         else:
             self.map_shift_x = 0
-            player.speed = 8
+            player.speed_x = 8
         self.tiles_sprite_group.update(self.map_shift_x, 'x')
 
     def camera_scroll_y(self):
@@ -46,18 +46,18 @@ class Level:
         direction_y = player.direction.y
         if player_y < (SCREEN_HEIGHT / 4) and direction_y < 0:
             self.map_shift_y = 8
-            player.speed = 0
+            player.speed_y = 0
         elif player_y > SCREEN_HEIGHT - (SCREEN_HEIGHT / 4) and direction_y > 0:
             self.map_shift_y = -8
-            player.speed = 0
+            player.speed_y = 0
         else:
             self.map_shift_y = 0
-            player.speed = 8
+            player.speed_y = 8
         self.tiles_sprite_group.update(self.map_shift_y, 'y')
 
     def vertical_move(self):
         player = self.player.sprite
-        player.rect.y += player.direction.y * player.speed
+        player.rect.y += player.direction.y * player.speed_y
         for sprite in self.tiles_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.y < 0:
@@ -67,7 +67,7 @@ class Level:
 
     def horizontal_move(self):
         player = self.player.sprite
-        player.rect.x += player.direction.x * player.speed
+        player.rect.x += player.direction.x * player.speed_x
         for sprite in self.tiles_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.x < 0:
@@ -76,10 +76,10 @@ class Level:
                     player.rect.right = sprite.rect.left
 
     def run(self):
-        self.tiles_sprite_group.draw(self.display_surface)
         self.player.update()
         self.camera_scroll_x()
         self.camera_scroll_y()
+        self.tiles_sprite_group.draw(self.display_surface)
         self.horizontal_move()
         self.vertical_move()
         self.player.draw(self.display_surface)

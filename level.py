@@ -2,12 +2,14 @@ import pygame
 from levels_tiles import Tile
 from level_info import tile_size, SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
+from money import Money
 
 
 class Level:
     def __init__(self, level_map_data, surface):
         self.tiles_sprite_group = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.money_sprite_group = pygame.sprite.Group()
         self.display_surface = surface
         self.level_building(level_map_data)
         self.map_shift_x = 0
@@ -24,6 +26,9 @@ class Level:
                 if column == 'P':
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
+                if column == 'M':
+                    money_sprite = Money((x, y))
+                    self.money_sprite_group.add(money_sprite)
 
     def camera_scroll_x(self):
         player = self.player.sprite
@@ -39,6 +44,7 @@ class Level:
             self.map_shift_x = 0
             player.speed_x = 8
         self.tiles_sprite_group.update(self.map_shift_x, 'x')
+        self.money_sprite_group.update(self.map_shift_x, 'x')
 
     def camera_scroll_y(self):
         player = self.player.sprite
@@ -54,6 +60,7 @@ class Level:
             self.map_shift_y = 0
             player.speed_y = 8
         self.tiles_sprite_group.update(self.map_shift_y, 'y')
+        self.money_sprite_group.update(self.map_shift_y, 'y')
 
     def vertical_move(self):
         player = self.player.sprite
@@ -75,11 +82,19 @@ class Level:
                 elif player.direction.x > 0:
                     player.rect.right = sprite.rect.left
 
+    def get_money(self):
+        player = self.player.sprite
+        for sprite in self.money_sprite_group.sprites():
+            if sprite.rect.colliderect(player.rect):
+                sprite.image.fill((0, 0, 0))
+
     def run(self):
         self.player.update()
         self.camera_scroll_x()
         self.camera_scroll_y()
         self.tiles_sprite_group.draw(self.display_surface)
+        self.money_sprite_group.draw(self.display_surface)
         self.horizontal_move()
         self.vertical_move()
+        self.get_money()
         self.player.draw(self.display_surface)

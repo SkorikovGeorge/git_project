@@ -11,6 +11,7 @@ class Level:
         self.player = pygame.sprite.GroupSingle()
         self.money_sprite_group = pygame.sprite.Group()
         self.display_surface = surface
+        self.money_quantity = 0
         self.level_building(level_map_data)
         self.map_shift_x = 0
         self.map_shift_y = 0
@@ -29,6 +30,7 @@ class Level:
                 if column == 'M':
                     money_sprite = Money((x, y))
                     self.money_sprite_group.add(money_sprite)
+                    self.money_quantity += 1
 
     def camera_scroll_x(self):
         player = self.player.sprite
@@ -86,7 +88,10 @@ class Level:
         player = self.player.sprite
         for sprite in self.money_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
-                sprite.image.fill((0, 0, 0))
+                self.money_sprite_group.remove(sprite)
+                self.money_quantity -= 1
+        if self.money_quantity == 0:
+            pass
 
     def run(self):
         self.player.update()

@@ -15,6 +15,7 @@ class Level:
         self.level_building(level_map_data)
         self.map_shift_x = 0
         self.map_shift_y = 0
+        
         self.background_coordinate_x = -200
         self.background_coordinate_y = -200
         self.background_image = pygame.image.load('images/space_image/space_background.jpg')

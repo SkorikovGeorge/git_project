@@ -17,6 +17,6 @@ level_map = [
 
 tile_size = 60
 SCREEN_WIDTH = 1100
-SCREEN_HEIGHT = len(level_map) * tile_size
+SCREEN_HEIGHT = 600
 
 

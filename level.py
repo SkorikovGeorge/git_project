@@ -15,6 +15,11 @@ class Level:
         self.level_building(level_map_data)
         self.map_shift_x = 0
         self.map_shift_y = 0
+        self.background_coordinate_x = -200
+        self.background_coordinate_y = -200
+        self.background_image = pygame.image.load('images/space_image/space_background.jpg')
+        self.background_image = pygame.transform.scale(self.background_image, (
+        self.background_image.get_width() * 2, self.background_image.get_height() * 2))
 
     def level_building(self, map_data):
         for row_index, row in enumerate(map_data):
@@ -22,11 +27,10 @@ class Level:
                 x = col_index * tile_size
                 y = row_index * tile_size
                 if column == 'X':
-                    tile = Tile((x, y), tile_size)
-                    tile.image.fill((152, 251, 152))
+                    tile = Tile((x, y), tile_size, 0)
                     self.tiles_sprite_group.add(tile)
                 if column == 'B':
-                    tile = Tile((x, y), tile_size)
+                    tile = Tile((x, y), tile_size, 1)
                     self.tiles_sprite_group.add(tile)
                 if column == 'P':
                     player_sprite = Player((x, y))
@@ -101,6 +105,9 @@ class Level:
         self.player.update()
         self.camera_scroll_x()
         self.camera_scroll_y()
+        self.background_coordinate_x += self.map_shift_x
+        self.background_coordinate_y += self.map_shift_y
+        self.display_surface.blit(self.background_image, (self.background_coordinate_x, self.background_coordinate_y))
         self.tiles_sprite_group.draw(self.display_surface)
         self.money_sprite_group.draw(self.display_surface)
         self.horizontal_move()

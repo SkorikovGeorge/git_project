@@ -1,11 +1,19 @@
-import pygame
-from level_info import  tile_size
+import pygame, random
+from level_info import tile_size
+
+garbage_image_1 = pygame.image.load('images/garbage_image/банка.png')
+garbage_image_2 = pygame.image.load('images/garbage_image/соус.png')
+garbage_image_3 = pygame.image.load('images/garbage_image/принглс.png')
+garbage_image_4 = pygame.image.load('images/garbage_image/мыло.png')
+garbage_image_5 = pygame.image.load('images/garbage_image/мешок.png')
+garbage_images = [garbage_image_1, garbage_image_2, garbage_image_3, garbage_image_4, garbage_image_5]
+
 
 class Money(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
-        self.image = pygame.Surface((tile_size * 0.4, tile_size * 0.4))
-        self.image.fill((255, 255, 0))
+        image_number = random.randint(1, 5)
+        self.image = pygame.transform.scale(garbage_images[image_number - 1], (tile_size * 0.65, tile_size * 0.65))
         self.rect = self.image.get_rect(topleft=pos)
 
     def update(self, shift, direction):

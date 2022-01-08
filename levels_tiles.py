@@ -1,6 +1,10 @@
 import pygame
+import random
 
 tile_image = pygame.image.load('images/tile_image/метеорит.png')
+tile_image_1 = pygame.image.load('images/tile_image/метеорит1.png')
+tile_image_2 = pygame.image.load('images/tile_image/метеорит2.png')
+tile_images = [tile_image, tile_image_1, tile_image_2]
 
 
 class Tile(pygame.sprite.Sprite):
@@ -10,7 +14,8 @@ class Tile(pygame.sprite.Sprite):
             self.image = pygame.Surface((size, size))
             self.rect = self.image.get_rect(topleft=position)
         else:
-            self.image = pygame.transform.scale(tile_image, (size, size))
+            image_number = random.randint(1, 3)
+            self.image = pygame.transform.scale(tile_images[image_number - 1], (size, size))
             self.rect = self.image.get_rect(topleft=position)
 
     def update(self, shift, direction):

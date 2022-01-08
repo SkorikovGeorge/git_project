@@ -23,6 +23,10 @@ class Level:
                 y = row_index * tile_size
                 if column == 'X':
                     tile = Tile((x, y), tile_size)
+                    tile.image.fill((152, 251, 152))
+                    self.tiles_sprite_group.add(tile)
+                if column == 'B':
+                    tile = Tile((x, y), tile_size)
                     self.tiles_sprite_group.add(tile)
                 if column == 'P':
                     player_sprite = Player((x, y))

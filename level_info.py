@@ -1,15 +1,19 @@
 level_map = [
-    '.........XXXMX.............',
-    '..XXX................M.....',
-    '..MX.........X.............',
-    'XXX...XXXXX.XX.........XXX ',
-    '............P.....XX.......',
-    'XXXX...X....XXX......XXXMXX',
-    'X......M..XXXXX.....XXXXXXX',
-    'XXXXXX.............XXXX...X',
-    '..MXXXXX...XXXXXX..XXXXXXXX',
-    'XXXXXXXX....XXXX...XXX.M...',
-    'XXXXXXXX.M..XXXX..M.XXXXXXX']
+    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
+    'B...............................B',
+    'B...........XXXMX...............B',
+    'B...XXX..................M......B',
+    'B....MX.........X...............B',
+    'B..XXX...XXXXX.XX.........XXX...B',
+    'B............P.......XX.........B',
+    'B..XXXX...X....XXX......XXXMXX..B',
+    'B..X......M..XXXXX.....XXXXXXX..B',
+    'B...XXXXXX............XXXX...X..B',
+    'B.MXXXXX...XXXXXX....XXXXXXXX...B',
+    'B..XXXXXXXX....XXXX...XXX.M.....B',
+    'B..XXXXXXXX.M..XXXX..M.XXXXXXX..B',
+    'B...............................B',
+    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB']
 
 tile_size = 60
 SCREEN_WIDTH = 1100

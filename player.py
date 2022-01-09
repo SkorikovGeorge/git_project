@@ -1,6 +1,8 @@
 import pygame
 from level_info import tile_size
 
+# ship_image_left_on
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
@@ -27,5 +29,9 @@ class Player(pygame.sprite.Sprite):
         else:
             self.direction.y = 0
 
+    def rotate_player_sprite(self):
+        pass
+
     def update(self):
         self.moving()
+        self.rotate_player_sprite()

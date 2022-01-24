@@ -20,6 +20,7 @@ result = Result(screen)
 go_to_choose = False
 go_to_level = False
 go_to_result = False
+start_window_and_button_draw_flag = True
 start_button_image = pygame.image.load('images/button_images/старт.png')
 start_button = button.Button(SCREEN_WIDTH // 3.5, SCREEN_HEIGHT // 4, start_button_image, 0.5)
 
@@ -30,8 +31,10 @@ while True:
             pygame.quit()
             sys.exit()
     start.run()
-    if start_button.draw(screen):
-        go_to_level = True
+    if start_window_and_button_draw_flag:
+        if start_button.draw(screen):
+            go_to_level = True
+            start_window_and_button_draw_flag = False
     if go_to_level:
         level.run()
     if level.get_money():

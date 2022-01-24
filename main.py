@@ -49,7 +49,7 @@ while True:
     if level.get_money():
         while not timer_stop:
             result_time = pygame.time.get_ticks() - start_ticks
-            stop = True
+            timer_stop = True
         result.run()
         go_to_level = False
     clock.tick(FPS)

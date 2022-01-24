@@ -17,12 +17,14 @@ start = Start(screen)
 choose = Choose(screen)
 level = Level(level_map, screen)
 result = Result(screen)
+go_to_start = True
 go_to_choose = False
 go_to_level = False
 go_to_result = False
-start_window_and_button_draw_flag = True
 start_button_image = pygame.image.load('images/button_images/старт.png')
 start_button = button.Button(SCREEN_WIDTH // 3.5, SCREEN_HEIGHT // 4, start_button_image, 0.5)
+start_button_image2 = pygame.image.load('images/button_images/старт.png')
+start_button2 = button.Button(SCREEN_WIDTH // 3, SCREEN_HEIGHT // 2, start_button_image, 0.2)
 
 while True:
     screen.fill(BLACK)
@@ -30,14 +32,20 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    start.run()
-    if start_window_and_button_draw_flag:
+    if go_to_start:
+        start.run()
         if start_button.draw(screen):
+            go_to_choose = True
+            go_to_start = False
+    if go_to_choose:
+        choose.run()
+        if start_button2.draw(screen):
             go_to_level = True
-            start_window_and_button_draw_flag = False
+            go_to_choose = False
     if go_to_level:
         level.run()
     if level.get_money():
         result.run()
+        go_to_level = False
     clock.tick(FPS)
     pygame.display.update()

@@ -42,9 +42,14 @@ while True:
         if start_button2.draw(screen):
             go_to_level = True
             go_to_choose = False
+            start_ticks = pygame.time.get_ticks()
+            timer_stop = False
     if go_to_level:
         level.run()
     if level.get_money():
+        while not timer_stop:
+            result_time = pygame.time.get_ticks() - start_ticks
+            stop = True
         result.run()
         go_to_level = False
     clock.tick(FPS)

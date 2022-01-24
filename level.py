@@ -100,7 +100,7 @@ class Level:
                 self.money_sprite_group.remove(sprite)
                 self.money_quantity -= 1
         if self.money_quantity == 0:
-            pass
+            return True
 
     def run(self):
         self.player.update()

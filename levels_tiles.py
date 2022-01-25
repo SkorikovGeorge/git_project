@@ -15,6 +15,9 @@ class Tile(pygame.sprite.Sprite):
         if visibility == 1:
             self.image = pygame.Surface((size, size))
             self.rect = self.image.get_rect(topleft=position)
+        elif visibility == 2:
+            self.image = pygame.transform.scale(lava_tile_image, (size, size))
+            self.rect = self.image.get_rect(topleft=position)
         else:
             image_number = random.randint(1, 4)
             self.image = pygame.transform.scale(tile_images[image_number - 1], (size, size))

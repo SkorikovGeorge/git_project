@@ -10,6 +10,7 @@ class Level:
         self.tiles_sprite_group = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         self.money_sprite_group = pygame.sprite.Group()
+        self.lava_tiles_group = pygame.sprite.Group()
         self.display_surface = surface
         self.money_quantity = 0
         self.level_building(level_map_data)
@@ -40,6 +41,9 @@ class Level:
                     money_sprite = Money((x, y))
                     self.money_sprite_group.add(money_sprite)
                     self.money_quantity += 1
+                if column == 'L':
+                    lava_tile = Tile((x, y), tile_size, 2)
+                    self.lava_tiles_group.add(lava_tile)
 
     def camera_scroll_x(self):
         player = self.player.sprite
@@ -55,6 +59,7 @@ class Level:
             self.map_shift_x = 0
             player.speed_x = 8
         self.tiles_sprite_group.update(self.map_shift_x, 'x')
+        self.lava_tiles_group.update(self.map_shift_x, 'x')
         self.money_sprite_group.update(self.map_shift_x, 'x')
 
     def camera_scroll_y(self):
@@ -71,6 +76,7 @@ class Level:
             self.map_shift_y = 0
             player.speed_y = 8
         self.tiles_sprite_group.update(self.map_shift_y, 'y')
+        self.lava_tiles_group.update(self.map_shift_y, 'y')
         self.money_sprite_group.update(self.map_shift_y, 'y')
 
     def vertical_move(self):
@@ -93,6 +99,12 @@ class Level:
                 elif player.direction.x > 0:
                     player.rect.right = sprite.rect.left
 
+    def death(self):
+        player = self.player.sprite
+        for sprite in self.lava_tiles_group.sprites():
+            if sprite.rect.colliderect(player.rect):
+                pass
+
     def get_money(self):
         player = self.player.sprite
         for sprite in self.money_sprite_group.sprites():
@@ -110,8 +122,10 @@ class Level:
         self.background_coordinate_y += self.map_shift_y
         self.display_surface.blit(self.background_image, (self.background_coordinate_x, self.background_coordinate_y))
         self.tiles_sprite_group.draw(self.display_surface)
+        self.lava_tiles_group.draw(self.display_surface)
         self.money_sprite_group.draw(self.display_surface)
         self.horizontal_move()
         self.vertical_move()
+        self.death()
         self.get_money()
         self.player.draw(self.display_surface)

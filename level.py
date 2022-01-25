@@ -104,6 +104,8 @@ class Level:
         player = self.player.sprite
         for sprite in self.lava_tiles_group.sprites():
             if sprite.rect.colliderect(player.rect):
+                boom_sound = pygame.mixer.Sound('sounds/boom.wav')
+                boom_sound.play(loops=0)
                 death_flag = True
         return death_flag
 

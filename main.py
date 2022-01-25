@@ -9,6 +9,8 @@ from result_window import Result
 from game_over import GameOver
 
 pygame.init()
+pygame.mixer.music.load('sounds/music.mp3')
+pygame.mixer.music.play(-1)
 BLACK = (0, 0, 0)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
@@ -23,6 +25,7 @@ go_to_start = True
 go_to_choose = False
 go_to_level = False
 go_to_result = False
+go_game_over = False
 start_button_image = pygame.image.load('images/button_images/старт.png')
 start_button = button.Button(SCREEN_WIDTH // 3.5, SCREEN_HEIGHT // 4, start_button_image, 0.5)
 start_button_image2 = pygame.image.load('images/button_images/старт.png')
@@ -49,13 +52,18 @@ while True:
     if go_to_level:
         level.run()
         if level.death():
-            game_over.run()
+            go_game_over = True
             timer_stop = True
-    if level.get_money():
-        while not timer_stop:
-            result_time = pygame.time.get_ticks() - start_ticks
-            timer_stop = True
+            go_to_level = False
+        if level.get_money():
+            while not timer_stop:
+                result_time = pygame.time.get_ticks() - start_ticks
+                timer_stop = True
+            go_to_result = True
+            go_to_level = False
+    if go_game_over:
+        game_over.run()
+    if go_to_result:
         result.run()
-        go_to_level = False
     clock.tick(FPS)
     pygame.display.update()

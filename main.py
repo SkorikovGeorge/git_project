@@ -6,6 +6,7 @@ from start_window import Start
 import button
 from choose_level_window import Choose
 from result_window import Result
+from game_over import GameOver
 
 pygame.init()
 BLACK = (0, 0, 0)
@@ -17,6 +18,7 @@ start = Start(screen)
 choose = Choose(screen)
 level = Level(level_map, screen)
 result = Result(screen)
+game_over = GameOver(screen)
 go_to_start = True
 go_to_choose = False
 go_to_level = False
@@ -46,6 +48,9 @@ while True:
             timer_stop = False
     if go_to_level:
         level.run()
+        if level.death():
+            game_over.run()
+            timer_stop = True
     if level.get_money():
         while not timer_stop:
             result_time = pygame.time.get_ticks() - start_ticks

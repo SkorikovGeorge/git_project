@@ -100,10 +100,12 @@ class Level:
                     player.rect.right = sprite.rect.left
 
     def death(self):
+        death_flag = False
         player = self.player.sprite
         for sprite in self.lava_tiles_group.sprites():
             if sprite.rect.colliderect(player.rect):
-                pass
+                death_flag = True
+        return death_flag
 
     def get_money(self):
         player = self.player.sprite

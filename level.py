@@ -21,7 +21,7 @@ class Level:
         self.background_coordinate_y = -200
         self.background_image = pygame.image.load('images/space_image/space_background.jpg')
         self.background_image = pygame.transform.scale(self.background_image, (
-            self.background_image.get_width() * 3, self.background_image.get_height() * 2))
+            self.background_image.get_width() * 3.3, self.background_image.get_height() * 2.3))
 
     def level_building(self, map_data):
         for row_index, row in enumerate(map_data):

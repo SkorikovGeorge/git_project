@@ -1,19 +1,21 @@
 level_map = [
-    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
-    'B...............................B',
-    'B...........XXXMX...............B',
-    'B...XXX..................M......B',
-    'B....MX.........X...............B',
-    'B..XXX...XXXXX.XX.........XXX...B',
-    'B............P.......XX.........B',
-    'B..XXXX...X....XXX......XXXMXX..B',
-    'B..X......M..XXXXX.....XXXXXXX..B',
-    'B...XXXXXX............XXXX...X..B',
-    'B.MXXXXX...XXXXXX....XXXXXXXX...B',
-    'B..XXXXXXXX....XXXX...XXX.M.....B',
-    'B..XXXXXXXX.M..XXXX..M.XXXXXXX..B',
-    'B...............................B',
-    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB']
+    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
+    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
+    'BB...............................BB',
+    'BB...........XXXMX...............BB',
+    'BB...XXX..................M......BB',
+    'BB....MX.........X...............BB',
+    'BB..XXX...XXXXX.XX.........XXX...BB',
+    'BB............P.......XX.........BB',
+    'BB..XXXX...X....XXX......XXXMXX..BB',
+    'BB..X......M..XXXXX.....XXXXXXX..BB',
+    'BB...XXXXXX............XXXX...X..BB',
+    'BB.MXXXXX...XXXXXX....XXXXXXXX...BB',
+    'BB..XXXXXXXX....XXXX...XXX.M.....BB',
+    'BB..XXXXXXXX.M..XXXX..M.XXXXXXX..BB',
+    'BB...............................BB',
+    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
+    'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB']
 
 tile_size = 60
 SCREEN_WIDTH = 1100

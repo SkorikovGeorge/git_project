@@ -3,7 +3,6 @@ import pygame
 from level_info import *
 from level import Level
 from start_window import Start
-import button
 from choose_level_window import Choose
 from result_window import Result
 from game_over import GameOver
@@ -21,15 +20,13 @@ choose = Choose(screen)
 level = Level(level_map, screen)
 result = Result(screen)
 game_over = GameOver(screen)
+
 go_to_start = True
 go_to_choose = False
 go_to_level = False
 go_to_result = False
 go_game_over = False
-start_button_image = pygame.image.load('images/button_images/старт.png')
-start_button = button.Button(SCREEN_WIDTH // 3.5, SCREEN_HEIGHT // 4, start_button_image, 0.5)
-start_button_image2 = pygame.image.load('images/button_images/старт.png')
-start_button2 = button.Button(SCREEN_WIDTH // 3, SCREEN_HEIGHT // 2, start_button_image, 0.2)
+
 
 while True:
     screen.fill(BLACK)
@@ -39,12 +36,16 @@ while True:
             sys.exit()
     if go_to_start:
         start.run()
-        if start_button.draw(screen):
+        if start.button():
             go_to_choose = True
             go_to_start = False
     if go_to_choose:
         choose.run()
-        if start_button2.draw(screen):
+        if choose.button() == 1:
+            pygame.mixer.music.pause()
+        elif choose.button() == 2:
+            pygame.mixer.music.unpause()
+        elif choose.button() == 0:
             go_to_level = True
             go_to_choose = False
             start_ticks = pygame.time.get_ticks()

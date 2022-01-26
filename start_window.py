@@ -1,5 +1,6 @@
 import pygame
 from level_info import SCREEN_WIDTH, SCREEN_HEIGHT
+from button import Button
 
 
 class Start:
@@ -15,6 +16,12 @@ class Start:
         self.text_h = self.text.get_height()
         self.text_x = SCREEN_WIDTH // 2 - self.text_w // 2
         self.text_y = SCREEN_HEIGHT // 5
+        start_button_image = pygame.image.load('images/button_images/старт.png')
+        self.start_button = Button(SCREEN_WIDTH // 3.5, SCREEN_HEIGHT // 4, start_button_image, 0.5)
+
+    def button(self):
+        if self.start_button.draw(self.display_surface):
+            return True
 
     def run(self):
         self.display_surface.blit(self.background_image, (0, 0))

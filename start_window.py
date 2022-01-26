@@ -8,8 +8,8 @@ class Start:
         self.display_surface = surface
         self.background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.background.fill((0, 0, 75))
-        font = pygame.font.Font(None, 50)
-        self.text = font.render("название игры", True, 'yellow')
+        font = pygame.font.Font('letters.ttf', 50)
+        self.text = font.render("TEXT", True, 'yellow')
         self.text_w = self.text.get_width()
         self.text_h = self.text.get_height()
         self.text_x = SCREEN_WIDTH // 2 - self.text_w // 2

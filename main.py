@@ -103,6 +103,6 @@ while True:
     if go_game_over:
         game_over.run()
     if go_to_result:
-        result.run()
+        result.run(new_score, current_best_score, result_time, int(current_best_time))
     clock.tick(FPS)
     pygame.display.update()

@@ -61,6 +61,9 @@ while True:
             go_to_choose = False
             start_ticks = pygame.time.get_ticks()
             timer_stop = False
+        elif choose.button() == 4:
+            go_to_start = True
+            go_to_choose = False
     if go_to_level_1:
         level_1.run()
         if level_1.death():

@@ -29,14 +29,17 @@ class Choose:
         self.display_surface.blit(self.background, (0, 0))
         self.level_1_best_score_button.draw(self.display_surface)
         self.level_2_best_score_button.draw(self.display_surface)
-        self.back_on_start_window_button.draw(self.display_surface)
         if self.level_1_button.draw(self.display_surface):
             self.result = 0
-        if self.level_2_button.draw(self.display_surface):
+        elif self.level_2_button.draw(self.display_surface):
             self.result = 3
-        if self.music_button.draw(self.display_surface):
+        elif self.back_on_start_window_button.draw(self.display_surface):
+            self.result = 4
+        elif self.music_button.draw(self.display_surface):
             self.music_click_count += 1
             if self.music_click_count % 2 == 1:
                 self.result = 1
             else:
                 self.result = 2
+        else:
+            self.result = -1

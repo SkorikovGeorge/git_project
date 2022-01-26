@@ -65,8 +65,6 @@ while True:
     if go_game_over:
         game_over.run()
     if go_to_result:
-        result_sound = pygame.mixer.Sound('sounds/result.wav')
-        result_sound.play(loops=0)
         result.run()
     clock.tick(FPS)
     pygame.display.update()

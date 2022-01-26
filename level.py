@@ -130,6 +130,8 @@ class Level:
                 text_y = SCREEN_HEIGHT // 5
             self.display_surface.blit(text, (text_x, text_y))
         if self.money_quantity == 0:
+            result_sound = pygame.mixer.Sound('sounds/result.wav')
+            result_sound.play(loops=0)
             return True
 
     def run(self):

@@ -113,6 +113,8 @@ class Level:
         player = self.player.sprite
         for sprite in self.money_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
+                money_sound = pygame.mixer.Sound('sounds/money.wav')
+                money_sound.play(loops=0)
                 self.money_sprite_group.remove(sprite)
                 self.money_quantity -= 1
         if self.money_quantity == 0:

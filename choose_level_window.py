@@ -21,12 +21,33 @@ class Choose:
         self.music_button = Button(SCREEN_WIDTH * 0.94, SCREEN_HEIGHT * 0.1, music_button_image, 0.2)
         self.music_click_count = 0
         self.result = -1
+        font = pygame.font.Font('letters.ttf', 20)
+        self.text1 = font.render('Rules of the game:', True, 'yellow')
+        self.text2 = font.render('collect the trash quickly,', True, 'yellow')
+        self.text3 = font.render('but avoid lava meteorites - they will kill you.', True, 'yellow')
+        self.text4 = font.render('Good luck!', True, 'yellow')
+        self.text_w1 = self.text1.get_width()
+        self.text_w2 = self.text2.get_width()
+        self.text_w3 = self.text3.get_width()
+        self.text_w4 = self.text4.get_width()
+        self.text_h = self.text1.get_height()
+        self.text_x = 550
+        self.text_y1 = 180
+        self.text_y2 = 200 + self.text_h + 30
+        self.text_y3 = 200 + self.text_h * 2 + 60
+        self.text_y4 = 200 + self.text_h * 3 + 90
 
     def button(self):
         return self.result
 
     def run(self):
         self.display_surface.blit(self.background, (0, 0))
+        self.display_surface.blit(self.text1, (self.text_x, self.text_y1))
+        pygame.draw.rect(self.display_surface, 'yellow', (self.text_x - 10, self.text_y1 - 10,
+                                                          self.text_w1 + 20, self.text_h + 20), 1)
+        self.display_surface.blit(self.text2, (self.text_x, self.text_y2))
+        self.display_surface.blit(self.text3, (self.text_x, self.text_y3))
+        self.display_surface.blit(self.text4, (self.text_x, self.text_y4))
         self.level_1_best_score_button.draw(self.display_surface)
         self.level_2_best_score_button.draw(self.display_surface)
         if self.level_1_button.draw(self.display_surface):

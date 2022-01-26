@@ -1,5 +1,3 @@
 tile_size = 60
 SCREEN_WIDTH = 1100
 SCREEN_HEIGHT = 600
-
-

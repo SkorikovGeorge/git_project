@@ -104,5 +104,8 @@ while True:
         game_over.run()
     if go_to_result:
         result.run(new_score, current_best_score, result_time, int(current_best_time))
+        if result.button():
+            go_to_start = True
+            go_to_result = False
     clock.tick(FPS)
     pygame.display.update()

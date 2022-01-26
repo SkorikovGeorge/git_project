@@ -1,6 +1,6 @@
 import pygame
 from levels_tiles import Tile
-from level_info import tile_size, SCREEN_WIDTH, SCREEN_HEIGHT
+from levels_info import tile_size, SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
 from money import Money
 
@@ -111,24 +111,19 @@ class Level:
 
     def get_money(self):
         player = self.player.sprite
-        font = pygame.font.Font(None, 50)
-        text = font.render(str(self.money_quantity), True, 'red')
+        font = pygame.font.Font(None, 30)
+        text = font.render(f'GARBAGE LEFT: {self.money_quantity}', True, 'white')
         text_w = text.get_width()
         text_h = text.get_height()
-        text_x = SCREEN_WIDTH // 5 - text_w // 2
-        text_y = SCREEN_HEIGHT // 5
+        text_x = SCREEN_WIDTH // 7 - text_w // 2
+        text_y = SCREEN_HEIGHT // 7
+        self.display_surface.blit(text, (text_x, text_y))
         for sprite in self.money_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
                 money_sound = pygame.mixer.Sound('sounds/money.wav')
                 money_sound.play(loops=0)
                 self.money_sprite_group.remove(sprite)
                 self.money_quantity -= 1
-                text = font.render(str(self.money_quantity), True, 'red')
-                text_w = text.get_width()
-                text_h = text.get_height()
-                text_x = SCREEN_WIDTH // 5 - text_w // 2
-                text_y = SCREEN_HEIGHT // 5
-            self.display_surface.blit(text, (text_x, text_y))
         if self.money_quantity == 0:
             result_sound = pygame.mixer.Sound('sounds/result.wav')
             result_sound.play(loops=0)

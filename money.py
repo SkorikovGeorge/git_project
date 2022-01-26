@@ -1,5 +1,5 @@
 import pygame, random
-from level_info import tile_size
+from levels_info import tile_size
 
 garbage_image_1 = pygame.image.load('images/garbage_image/банка.png')
 garbage_image_2 = pygame.image.load('images/garbage_image/молоко.png')

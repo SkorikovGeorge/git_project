@@ -1,5 +1,5 @@
 import pygame
-from level_info import SCREEN_WIDTH, SCREEN_HEIGHT
+from levels_info import SCREEN_WIDTH, SCREEN_HEIGHT
 
 
 class Result:

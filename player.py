@@ -1,5 +1,5 @@
 import pygame
-from level_info import tile_size
+from levels_info import tile_size
 
 player_spaceship_image = pygame.image.load('images/spaceship_images/корабль выкл.png')
 player_diagonal_spaceship_image = pygame.image.load('images/spaceship_images/корабль диагональ выкл.png')

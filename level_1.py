@@ -1,8 +1,8 @@
-level_map = [
+level_1_map = [
     'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
     'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
-    'BB...........XXXMX...............XLXLXLXLXXX.BB',
-    'BB...XX...................M...............M..BB',
+    'BB...........XXXXX...............XLXLXLXLXXX.BB',
+    'BB...XX.......XXMX........M...............M..BB',
     'BB....MX.........X...........................BB',
     'BB..XXX...XXXXX.XX.........XXX...............BB',
     'BB............P.......XX.....................BB',
@@ -18,9 +18,3 @@ level_map = [
     'BBXXXXXX...........XXXXXXXXX.................BB',
     'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
     'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB']
-
-tile_size = 60
-SCREEN_WIDTH = 1100
-SCREEN_HEIGHT = 600
-
-

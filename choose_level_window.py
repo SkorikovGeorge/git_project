@@ -8,6 +8,8 @@ class Choose:
         self.display_surface = surface
         self.background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.background.fill((0, 0, 75))
+        back_button_image = pygame.image.load('images/button_images/back button.png')
+        self.back_on_start_window_button = Button(SCREEN_WIDTH * 0.91, SCREEN_HEIGHT * 0.9, back_button_image, 0.9)
         best_score_image = pygame.image.load('images/button_images/cup button.png')
         self.level_1_best_score_button = Button(SCREEN_WIDTH * 0.33, SCREEN_HEIGHT * 0.33, best_score_image, 0.185)
         self.level_2_best_score_button = Button(SCREEN_WIDTH * 0.33, SCREEN_HEIGHT * 0.66, best_score_image, 0.185)
@@ -27,6 +29,7 @@ class Choose:
         self.display_surface.blit(self.background, (0, 0))
         self.level_1_best_score_button.draw(self.display_surface)
         self.level_2_best_score_button.draw(self.display_surface)
+        self.back_on_start_window_button.draw(self.display_surface)
         if self.level_1_button.draw(self.display_surface):
             self.result = 0
         if self.level_2_button.draw(self.display_surface):

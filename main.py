@@ -65,6 +65,7 @@ while True:
             go_to_start = True
             go_to_choose = False
     if go_to_level_1:
+        level_1.again(level_1_map, screen)
         level_1.run()
         if level_1.death():
             go_game_over = True
@@ -83,6 +84,7 @@ while True:
             go_to_result = True
             go_to_level_1 = False
     if go_to_level_2:
+        level_2.again(level_2_map, screen)
         level_2.run()
         if level_2.death():
             go_game_over = True

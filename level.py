@@ -144,3 +144,21 @@ class Level:
         self.death()
         self.get_money()
         self.player.draw(self.display_surface)
+
+    def again(self, level_map_data, surface):
+        self.tiles_sprite_group = pygame.sprite.Group()
+        self.player = pygame.sprite.GroupSingle()
+        self.money_sprite_group = pygame.sprite.Group()
+        self.lava_tiles_group = pygame.sprite.Group()
+        self.display_surface = surface
+        self.money_quantity = 0
+        self.level_building(level_map_data)
+        self.map_shift_x = 0
+        self.map_shift_y = 0
+
+        self.background_coordinate_x = -200
+        self.background_coordinate_y = -200
+        self.background_image = pygame.image.load('images/space_image/space_background.jpg')
+        self.background_image = pygame.transform.scale(self.background_image, (
+            self.background_image.get_width() * 3.3, self.background_image.get_height() * 2.3))
+

@@ -2,12 +2,20 @@ def score(time):
     seconds = int(time) // 1000
     minutes = seconds // 60
     if minutes < 1:
-        score = f'0:{seconds}'
-        return score
+        if seconds >= 10:
+            score = f'0:{seconds}'
+            return score
+        else:
+            score = f'0:0{seconds}'
+            return score
     else:
         seconds = seconds - minutes * 60
-        score = f'{minutes}:{seconds}'
-        return score
+        if seconds >= 10:
+            score = f'{minutes}:{seconds}'
+            return score
+        else:
+            score = f'{minutes}:0{seconds}'
+            return score
 
 
 def get_best_result(filename):

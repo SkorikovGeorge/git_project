@@ -1,6 +1,7 @@
 import pygame
 from levels_info import SCREEN_WIDTH, SCREEN_HEIGHT
 from button import Button
+from score import *
 
 
 class Choose:
@@ -8,6 +9,8 @@ class Choose:
         self.display_surface = surface
         self.background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.background.fill((0, 0, 75))
+        self.show_level_1_score = False
+        self.show_level_2_score = False
         back_button_image = pygame.image.load('images/button_images/back button.png')
         self.back_on_start_window_button = Button(SCREEN_WIDTH * 0.91, SCREEN_HEIGHT * 0.9, back_button_image, 0.9)
         best_score_image = pygame.image.load('images/button_images/cup button.png')
@@ -21,7 +24,13 @@ class Choose:
         self.music_button = Button(SCREEN_WIDTH * 0.94, SCREEN_HEIGHT * 0.1, music_button_image, 0.2)
         self.music_click_count = 0
         self.result = -1
+        best_time_1 = get_best_result('level_1_score.txt')
+        best_time_2 = get_best_result('level_2_score.txt')
+        best_score_1 = score(best_time_1)
+        best_score_2 = score(best_time_2)
         font = pygame.font.Font('letters.ttf', 20)
+        self.level_1_score_text = font.render(f'YOUR BEST: {best_score_1}', False, 'white')
+        self.level_2_score_text = font.render(f'YOUR BEST: {best_score_2}', False, 'white')
         self.text1 = font.render('Rules of the game:', True, 'yellow')
         self.text2 = font.render('collect the trash quickly,', True, 'yellow')
         self.text3 = font.render('but avoid lava meteorites - they will kill you.', True, 'yellow')
@@ -48,8 +57,14 @@ class Choose:
         self.display_surface.blit(self.text2, (self.text_x, self.text_y2))
         self.display_surface.blit(self.text3, (self.text_x, self.text_y3))
         self.display_surface.blit(self.text4, (self.text_x, self.text_y4))
-        self.level_1_best_score_button.draw(self.display_surface)
-        self.level_2_best_score_button.draw(self.display_surface)
+        if self.level_1_best_score_button.draw(self.display_surface):
+            self.show_level_1_score = True
+        if self.show_level_1_score:
+            self.display_surface.blit(self.level_1_score_text, (SCREEN_WIDTH * 0.27, SCREEN_HEIGHT * 0.42))
+        if self.level_2_best_score_button.draw(self.display_surface):
+            self.show_level_2_score = True
+        if self.show_level_2_score:
+            self.display_surface.blit(self.level_2_score_text, (SCREEN_WIDTH * 0.27, SCREEN_HEIGHT * 0.75))
         if self.level_1_button.draw(self.display_surface):
             self.result = 0
         elif self.level_2_button.draw(self.display_surface):

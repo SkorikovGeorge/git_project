@@ -50,6 +50,6 @@ class Result:
             self.text_w3 = self.text3.get_width()
             self.text_h3 = self.text3.get_height()
             self.text_x3 = SCREEN_WIDTH // 2 - self.text_w3 // 2
-            self.text_y3 = self.text_y2 + 40
+            self.text_y3 = self.text_y2 + 75
             self.display_surface.blit(self.text3, (self.text_x3, self.text_y3))
 

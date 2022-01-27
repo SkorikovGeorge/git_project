@@ -67,6 +67,7 @@ while True:
     if go_to_level_1:
         level_1.run()
         if level_1.death():
+            level_1.again(level_1_map, screen)
             go_game_over = True
             start_ticks = 0
             go_to_level_1 = False
@@ -86,6 +87,7 @@ while True:
     if go_to_level_2:
         level_2.run()
         if level_2.death():
+            level_2.again(level_2_map, screen)
             go_game_over = True
             start_ticks = 0
             go_to_level_2 = False
@@ -104,10 +106,13 @@ while True:
             go_to_level_2 = False
     if go_game_over:
         game_over.run()
+        if game_over.button():
+            go_to_choose = True
+            go_game_over = False
     if go_to_result:
         result.run(new_score, current_best_score, result_time, int(current_best_time))
         if result.button():
-            go_to_start = True
+            go_to_choose = True
             go_to_result = False
     clock.tick(FPS)
     pygame.display.update()

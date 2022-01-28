@@ -5,6 +5,7 @@ import pygame
 class Animation(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
+        # подгрузка изображений кнопки для анимации
         frame_1 = pygame.image.load('data/images/start_button_animation/start_button_1.png')
         frame_1 = pygame.transform.scale(frame_1, (frame_1.get_width() * 1.3, frame_1.get_height() * 1.3))
         frame_2 = pygame.image.load('data/images/start_button_animation/start_button_2.png')
@@ -25,6 +26,7 @@ class Animation(pygame.sprite.Sprite):
         frame_9 = pygame.transform.scale(frame_9, (frame_9.get_width() * 1.3, frame_9.get_height() * 1.3))
         frame_10 = pygame.image.load('data/images/start_button_animation/start_button_10.png')
         frame_10 = pygame.transform.scale(frame_10, (frame_10.get_width() * 1.3, frame_10.get_height() * 1.3))
+
         self.current_frame = 0
         self.frame_sprites = [frame_1, frame_1, frame_1, frame_1, frame_1, frame_1, frame_1, frame_1, frame_1, frame_1,
                               frame_1, frame_2, frame_3, frame_4, frame_5, frame_6, frame_7, frame_8, frame_9, frame_10]

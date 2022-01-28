@@ -1,8 +1,8 @@
 import pygame
 from levels_info import tile_size
 
-player_spaceship_image = pygame.image.load('date/images/spaceship_images/корабль выкл.png')
-player_diagonal_spaceship_image = pygame.image.load('date/images/spaceship_images/корабль диагональ выкл.png')
+player_spaceship_image = pygame.image.load('data/images/spaceship_images/корабль выкл.png')
+player_diagonal_spaceship_image = pygame.image.load('data/images/spaceship_images/корабль диагональ выкл.png')
 
 
 class Player(pygame.sprite.Sprite):

@@ -7,27 +7,23 @@ from money import Money
 
 class Level:
     def __init__(self, level_map_data, surface):
-        # создание групп для спрайтов с разным функционалом
         self.tiles_sprite_group = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         self.money_sprite_group = pygame.sprite.Group()
         self.lava_tiles_group = pygame.sprite.Group()
-
         self.display_surface = surface
         self.money_quantity = 0
         self.level_building(level_map_data)
         self.map_shift_x = 0
         self.map_shift_y = 0
 
-        # фон
         self.background_coordinate_x = -200
         self.background_coordinate_y = -200
-        self.background_image = pygame.image.load('date/images/space_image/space_background.jpg')
+        self.background_image = pygame.image.load('data/images/space_image/space_background.jpg')
         self.background_image = pygame.transform.scale(self.background_image, (
             self.background_image.get_width() * 3.3, self.background_image.get_height() * 2.3))
 
     def level_building(self, map_data):
-        # считывание карты уровня
         for row_index, row in enumerate(map_data):
             for col_index, column in enumerate(row):
                 x = col_index * tile_size
@@ -50,7 +46,6 @@ class Level:
                     self.lava_tiles_group.add(lava_tile)
 
     def camera_scroll_x(self):
-        # прокрутка камеры за игроком по горизонтали
         player = self.player.sprite
         player_x = player.rect.centerx
         direction_x = player.direction.x
@@ -63,13 +58,11 @@ class Level:
         else:
             self.map_shift_x = 0
             player.speed_x = 8
-
         self.tiles_sprite_group.update(self.map_shift_x, 'x')
         self.lava_tiles_group.update(self.map_shift_x, 'x')
         self.money_sprite_group.update(self.map_shift_x, 'x')
 
     def camera_scroll_y(self):
-        # прокрутка камеры за игроком по вертикали
         player = self.player.sprite
         player_y = player.rect.centery
         direction_y = player.direction.y
@@ -82,13 +75,11 @@ class Level:
         else:
             self.map_shift_y = 0
             player.speed_y = 8
-
         self.tiles_sprite_group.update(self.map_shift_y, 'y')
         self.lava_tiles_group.update(self.map_shift_y, 'y')
         self.money_sprite_group.update(self.map_shift_y, 'y')
 
     def vertical_move(self):
-        # движение игрока в зависимости от сталкивания с метеоритами
         player = self.player.sprite
         player.rect.y += player.direction.y * player.speed_y
         for sprite in self.tiles_sprite_group.sprites():
@@ -99,7 +90,6 @@ class Level:
                     player.rect.bottom = sprite.rect.top
 
     def horizontal_move(self):
-        # движение игрока в зависимости от сталкивания с метеоритами
         player = self.player.sprite
         player.rect.x += player.direction.x * player.speed_x
         for sprite in self.tiles_sprite_group.sprites():
@@ -110,39 +100,32 @@ class Level:
                     player.rect.right = sprite.rect.left
 
     def death(self):
-        # функция смерти в случае столкновения с метеоритом с лавой
         death_flag = False
         player = self.player.sprite
         for sprite in self.lava_tiles_group.sprites():
             if sprite.rect.colliderect(player.rect):
-                # звук взрыва в момент столкновения
-                boom_sound = pygame.mixer.Sound('date/sounds/boom.wav')
+                boom_sound = pygame.mixer.Sound('data/sounds/boom.wav')
                 boom_sound.play(loops=0)
                 death_flag = True
         return death_flag
 
     def get_money(self):
         player = self.player.sprite
-
-        # вывод на экран счётчика оставшегося мусора
         font = pygame.font.Font(None, 30)
         text = font.render(f'GARBAGE LEFT: {self.money_quantity}', True, 'white')
         text_w = text.get_width()
+        text_h = text.get_height()
         text_x = SCREEN_WIDTH // 7 - text_w // 2
         text_y = SCREEN_HEIGHT // 7
         self.display_surface.blit(text, (text_x, text_y))
-
-        # сталкнивание с мусором
         for sprite in self.money_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
-                # звук сбора монет
-                money_sound = pygame.mixer.Sound('date/sounds/money.wav')
+                money_sound = pygame.mixer.Sound('data/sounds/money.wav')
                 money_sound.play(loops=0)
                 self.money_sprite_group.remove(sprite)
                 self.money_quantity -= 1
         if self.money_quantity == 0:
-            # звук выигрыша
-            result_sound = pygame.mixer.Sound('date/sounds/result.wav')
+            result_sound = pygame.mixer.Sound('data/sounds/result.wav')
             result_sound.play(loops=0)
             return True
 
@@ -163,12 +146,10 @@ class Level:
         self.player.draw(self.display_surface)
 
     def again(self, level_map_data, surface):
-        # функция для создания создания уровня при повторном прохождении
         self.tiles_sprite_group = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         self.money_sprite_group = pygame.sprite.Group()
         self.lava_tiles_group = pygame.sprite.Group()
-
         self.display_surface = surface
         self.money_quantity = 0
         self.level_building(level_map_data)
@@ -177,7 +158,7 @@ class Level:
 
         self.background_coordinate_x = -200
         self.background_coordinate_y = -200
-        self.background_image = pygame.image.load('date/images/space_image/space_background.jpg')
+        self.background_image = pygame.image.load('data/images/space_image/space_background.jpg')
         self.background_image = pygame.transform.scale(self.background_image, (
             self.background_image.get_width() * 3.3, self.background_image.get_height() * 2.3))
 

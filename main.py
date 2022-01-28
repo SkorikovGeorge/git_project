@@ -12,6 +12,8 @@ from game_over import GameOver
 from animation import *
 
 pygame.init()
+pygame.display.set_caption('Kindly request: do not throw garbage')
+pygame.display.set_icon(pygame.image.load('data/images/icon/icon.jpg'))
 pygame.mixer.music.load('data/sounds/music.mp3')
 pygame.mixer.music.play(-1)
 BLACK = (0, 0, 0)

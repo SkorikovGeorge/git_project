@@ -9,6 +9,7 @@ from start_window import Start
 from choose_level_window import Choose
 from result_window import Result
 from game_over import GameOver
+from animation import  *
 
 pygame.init()
 pygame.mixer.music.load('sounds/music.mp3')
@@ -33,6 +34,10 @@ go_to_level_3 = False
 go_to_result = False
 go_game_over = False
 
+moving_sprites = pygame.sprite.Group()
+animation = Animation(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+moving_sprites.add(animation)
+
 
 while True:
     screen.fill(BLACK)
@@ -45,6 +50,8 @@ while True:
         if start.button():
             go_to_choose = True
             go_to_start = False
+        moving_sprites.draw(screen)
+        moving_sprites.update(0.6)
     if go_to_choose:
         choose.run()
         if choose.button() == 1:

@@ -24,17 +24,11 @@ class Choose:
         self.music_button = Button(SCREEN_WIDTH * 0.94, SCREEN_HEIGHT * 0.1, music_button_image, 0.2)
         self.music_click_count = 0
         self.result = -1
-        best_time_1 = get_best_result('level_1_score.txt')
-        best_time_2 = get_best_result('level_2_score.txt')
-        best_score_1 = score(best_time_1)
-        best_score_2 = score(best_time_2)
-        font = pygame.font.Font('letters.ttf', 20)
-        self.level_1_score_text = font.render(f'YOUR BEST: {best_score_1}', False, 'white')
-        self.level_2_score_text = font.render(f'YOUR BEST: {best_score_2}', False, 'white')
-        self.text1 = font.render('Rules of the game:', True, 'yellow')
-        self.text2 = font.render('collect the trash quickly,', True, 'yellow')
-        self.text3 = font.render('but avoid lava meteorites - they will kill you.', True, 'yellow')
-        self.text4 = font.render('Good luck!', True, 'yellow')
+        self.font = pygame.font.Font('letters.ttf', 20)
+        self.text1 = self.font.render('Rules of the game:', True, 'yellow')
+        self.text2 = self.font.render('collect the trash quickly,', True, 'yellow')
+        self.text3 = self.font.render('but avoid lava meteorites - they will kill you.', True, 'yellow')
+        self.text4 = self.font.render('Good luck!', True, 'yellow')
         self.text_w1 = self.text1.get_width()
         self.text_w2 = self.text2.get_width()
         self.text_w3 = self.text3.get_width()
@@ -50,6 +44,10 @@ class Choose:
         return self.result
 
     def run(self):
+        level_1_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("level_1_score.txt"))}', False,
+                                              'white')
+        level_2_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("level_2_score.txt"))}', False,
+                                              'white')
         self.display_surface.blit(self.background, (0, 0))
         self.display_surface.blit(self.text1, (self.text_x, self.text_y1))
         pygame.draw.rect(self.display_surface, 'yellow', (self.text_x - 10, self.text_y1 - 10,
@@ -60,11 +58,11 @@ class Choose:
         if self.level_1_best_score_button.draw(self.display_surface):
             self.show_level_1_score = True
         if self.show_level_1_score:
-            self.display_surface.blit(self.level_1_score_text, (SCREEN_WIDTH * 0.27, SCREEN_HEIGHT * 0.42))
+            self.display_surface.blit(level_1_score_text, (SCREEN_WIDTH * 0.27, SCREEN_HEIGHT * 0.42))
         if self.level_2_best_score_button.draw(self.display_surface):
             self.show_level_2_score = True
         if self.show_level_2_score:
-            self.display_surface.blit(self.level_2_score_text, (SCREEN_WIDTH * 0.27, SCREEN_HEIGHT * 0.75))
+            self.display_surface.blit(level_2_score_text, (SCREEN_WIDTH * 0.27, SCREEN_HEIGHT * 0.75))
         if self.level_1_button.draw(self.display_surface):
             self.result = 0
         elif self.level_2_button.draw(self.display_surface):

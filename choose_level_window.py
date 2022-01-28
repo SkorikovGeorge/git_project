@@ -11,19 +11,26 @@ class Choose:
         self.background.fill((0, 0, 75))
         self.show_level_1_score = False
         self.show_level_2_score = False
+        self.result = -1
+
+        # кнопка назад
         back_button_image = pygame.image.load('date/images/button_images/back button.png')
         self.back_on_start_window_button = Button(SCREEN_WIDTH * 0.91, SCREEN_HEIGHT * 0.9, back_button_image, 0.9)
+        # кнопки показа рекорда
         best_score_image = pygame.image.load('date/images/button_images/cup button.png')
         self.level_1_best_score_button = Button(SCREEN_WIDTH * 0.33, SCREEN_HEIGHT * 0.33, best_score_image, 0.185)
         self.level_2_best_score_button = Button(SCREEN_WIDTH * 0.33, SCREEN_HEIGHT * 0.66, best_score_image, 0.185)
+        # кнопки перехода к уровням
         level_1_button_image = pygame.image.load('date/images/button_images/level 1 button.png')
         level_2_button_image = pygame.image.load('date/images/button_images/level 2 button.png')
         self.level_1_button = Button(SCREEN_WIDTH // 6, SCREEN_HEIGHT * 0.33, level_1_button_image, 1)
         self.level_2_button = Button(SCREEN_WIDTH // 6, SCREEN_HEIGHT * 0.66, level_2_button_image, 1)
+        # кнопка остановки музыки
         music_button_image = pygame.image.load('date/images/button_images/mute_button.png')
         self.music_button = Button(SCREEN_WIDTH * 0.94, SCREEN_HEIGHT * 0.1, music_button_image, 0.2)
         self.music_click_count = 0
-        self.result = -1
+
+        # правила игры
         self.font = pygame.font.Font('letters.ttf', 20)
         self.text1 = self.font.render('Rules of the game:', True, 'yellow')
         self.text2 = self.font.render('collect the trash quickly,', True, 'yellow')
@@ -41,13 +48,10 @@ class Choose:
         self.text_y4 = 200 + self.text_h * 3 + 90
 
     def button(self):
+        # для определения, какая именно кнопка нажата
         return self.result
 
     def run(self):
-        level_1_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("date/levels_score/level_1_score.txt"))}', False,
-                                              'white')
-        level_2_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("date/levels_score/level_2_score.txt"))}', False,
-                                              'white')
         self.display_surface.blit(self.background, (0, 0))
         self.display_surface.blit(self.text1, (self.text_x, self.text_y1))
         pygame.draw.rect(self.display_surface, 'yellow', (self.text_x - 10, self.text_y1 - 10,
@@ -55,6 +59,14 @@ class Choose:
         self.display_surface.blit(self.text2, (self.text_x, self.text_y2))
         self.display_surface.blit(self.text3, (self.text_x, self.text_y3))
         self.display_surface.blit(self.text4, (self.text_x, self.text_y4))
+
+        # текст с рекордами
+        level_1_score_text = self.font.render(
+            f'YOUR BEST: {score(get_best_result("date/levels_score/level_1_score.txt"))}', False,
+            'white')
+        level_2_score_text = self.font.render(
+            f'YOUR BEST: {score(get_best_result("date/levels_score/level_2_score.txt"))}', False,
+            'white')
         if self.level_1_best_score_button.draw(self.display_surface):
             self.show_level_1_score = True
         if self.show_level_1_score:
@@ -63,6 +75,8 @@ class Choose:
             self.show_level_2_score = True
         if self.show_level_2_score:
             self.display_surface.blit(level_2_score_text, (SCREEN_WIDTH * 0.27, SCREEN_HEIGHT * 0.75))
+
+        # какая именно кнопка нажата
         if self.level_1_button.draw(self.display_surface):
             self.result = 0
         elif self.level_2_button.draw(self.display_surface):
@@ -76,4 +90,5 @@ class Choose:
             else:
                 self.result = 2
         else:
+            # не нажата никакая
             self.result = -1

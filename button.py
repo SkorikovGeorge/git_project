@@ -11,10 +11,12 @@ class Button:
         self.clicked = False
 
     def draw(self, surface):
+        # прорисовка кнопки
         surface.blit(self.image, (self.rect.x, self.rect.y))
         pos = pygame.mouse.get_pos()
         action = False
 
+        # отработка нажатия кнопки
         if self.rect.collidepoint(pos):
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked is False:
                 self.clicked = True

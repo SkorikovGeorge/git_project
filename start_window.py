@@ -8,16 +8,21 @@ class Start:
         self.display_surface = surface
         self.background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.background.fill((0, 0, 75))
+
+        # название игры
         font = pygame.font.Font('letters.ttf', 50)
         self.text = font.render("TEXT", True, 'yellow')
         self.text_w = self.text.get_width()
         self.text_h = self.text.get_height()
         self.text_x = SCREEN_WIDTH // 2 - self.text_w // 2
         self.text_y = SCREEN_HEIGHT // 5
+
+        # кнопка PLAY
         start_button_image = pygame.image.load('date/images/button_images/start button.png')
         self.start_button = Button(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, start_button_image, 1.25)
 
     def button(self):
+        # нажатие кнопки PLAY
         if self.start_button.draw(self.display_surface):
             return True
 

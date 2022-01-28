@@ -1,4 +1,5 @@
 def score(time):
+    # форматирование времени из миллисекунд в стандартный формат
     seconds = int(time) // 1000
     minutes = seconds // 60
     if minutes < 1:
@@ -19,6 +20,7 @@ def score(time):
 
 
 def get_best_result(filename):
+    # считывание рекорда из файла
     f = open(filename, mode='r')
     line = f.readlines()
     f.close()
@@ -26,6 +28,7 @@ def get_best_result(filename):
 
 
 def write_new_best_result(filename, best_score):
+    # перезапись рекорда в файл
     open(filename, mode='w').close()
     f = open(filename, mode='w')
     f.write(best_score)

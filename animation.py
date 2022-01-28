@@ -1,6 +1,7 @@
 import pygame
 
 
+# класс для анимации кнопки на стартовом окне
 class Animation(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()

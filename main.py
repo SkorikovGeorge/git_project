@@ -9,10 +9,10 @@ from start_window import Start
 from choose_level_window import Choose
 from result_window import Result
 from game_over import GameOver
-from animation import  *
+from animation import *
 
 pygame.init()
-pygame.mixer.music.load('date/sounds/music.mp3')
+pygame.mixer.music.load('data/sounds/music.mp3')
 pygame.mixer.music.play(-1)
 BLACK = (0, 0, 0)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -82,10 +82,10 @@ while True:
             while not timer_stop:
                 result_time = pygame.time.get_ticks() - start_ticks
                 new_score = score(result_time)
-                current_best_time = get_best_result('date/levels_score/level_1_score.txt')
+                current_best_time = get_best_result('data/levels_score/level_1_score.txt')
                 current_best_score = score(current_best_time)
                 if result_time < int(current_best_time):
-                    write_new_best_result('date/levels_score/level_1_score.txt', str(result_time))
+                    write_new_best_result('data/levels_score/level_1_score.txt', str(result_time))
                 start_ticks = 0
                 timer_stop = True
             level_1.again(level_1_map, screen)
@@ -102,10 +102,10 @@ while True:
             while not timer_stop:
                 result_time = pygame.time.get_ticks() - start_ticks
                 new_score = score(result_time)
-                current_best_time = get_best_result('date/levels_score/level_2_score.txt')
+                current_best_time = get_best_result('data/levels_score/level_2_score.txt')
                 current_best_score = score(current_best_time)
                 if result_time < int(current_best_time):
-                    write_new_best_result('date/levels_score/level_2_score.txt', str(result_time))
+                    write_new_best_result('data/levels_score/level_2_score.txt', str(result_time))
                 start_ticks = 0
                 timer_stop = True
             level_2.again(level_2_map, screen)

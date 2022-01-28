@@ -11,20 +11,20 @@ class Choose:
         self.background.fill((0, 0, 75))
         self.show_level_1_score = False
         self.show_level_2_score = False
-        back_button_image = pygame.image.load('date/images/button_images/back button.png')
+        back_button_image = pygame.image.load('data/images/button_images/back button.png')
         self.back_on_start_window_button = Button(SCREEN_WIDTH * 0.91, SCREEN_HEIGHT * 0.9, back_button_image, 0.9)
-        best_score_image = pygame.image.load('date/images/button_images/cup button.png')
+        best_score_image = pygame.image.load('data/images/button_images/cup button.png')
         self.level_1_best_score_button = Button(SCREEN_WIDTH * 0.33, SCREEN_HEIGHT * 0.33, best_score_image, 0.185)
         self.level_2_best_score_button = Button(SCREEN_WIDTH * 0.33, SCREEN_HEIGHT * 0.66, best_score_image, 0.185)
-        level_1_button_image = pygame.image.load('date/images/button_images/level 1 button.png')
-        level_2_button_image = pygame.image.load('date/images/button_images/level 2 button.png')
+        level_1_button_image = pygame.image.load('data/images/button_images/level 1 button.png')
+        level_2_button_image = pygame.image.load('data/images/button_images/level 2 button.png')
         self.level_1_button = Button(SCREEN_WIDTH // 6, SCREEN_HEIGHT * 0.33, level_1_button_image, 1)
         self.level_2_button = Button(SCREEN_WIDTH // 6, SCREEN_HEIGHT * 0.66, level_2_button_image, 1)
-        music_button_image = pygame.image.load('date/images/button_images/mute_button.png')
+        music_button_image = pygame.image.load('data/images/button_images/mute_button.png')
         self.music_button = Button(SCREEN_WIDTH * 0.94, SCREEN_HEIGHT * 0.1, music_button_image, 0.2)
         self.music_click_count = 0
         self.result = -1
-        self.font = pygame.font.Font('letters.ttf', 20)
+        self.font = pygame.font.Font('data/letters.ttf', 20)
         self.text1 = self.font.render('Rules of the game:', True, 'yellow')
         self.text2 = self.font.render('collect the trash quickly,', True, 'yellow')
         self.text3 = self.font.render('but avoid lava meteorites - they will kill you.', True, 'yellow')
@@ -44,9 +44,9 @@ class Choose:
         return self.result
 
     def run(self):
-        level_1_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("date/levels_score/level_1_score.txt"))}', False,
+        level_1_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("data/levels_score/level_1_score.txt"))}', False,
                                               'white')
-        level_2_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("date/levels_score/level_2_score.txt"))}', False,
+        level_2_score_text = self.font.render(f'YOUR BEST: {score(get_best_result("data/levels_score/level_2_score.txt"))}', False,
                                               'white')
         self.display_surface.blit(self.background, (0, 0))
         self.display_surface.blit(self.text1, (self.text_x, self.text_y1))

@@ -19,7 +19,7 @@ class Level:
 
         self.background_coordinate_x = -200
         self.background_coordinate_y = -200
-        self.background_image = pygame.image.load('date/images/space_image/space_background.jpg')
+        self.background_image = pygame.image.load('data/images/space_image/space_background.jpg')
         self.background_image = pygame.transform.scale(self.background_image, (
             self.background_image.get_width() * 3.3, self.background_image.get_height() * 2.3))
 
@@ -104,7 +104,7 @@ class Level:
         player = self.player.sprite
         for sprite in self.lava_tiles_group.sprites():
             if sprite.rect.colliderect(player.rect):
-                boom_sound = pygame.mixer.Sound('date/sounds/boom.wav')
+                boom_sound = pygame.mixer.Sound('data/sounds/boom.wav')
                 boom_sound.play(loops=0)
                 death_flag = True
         return death_flag
@@ -120,12 +120,12 @@ class Level:
         self.display_surface.blit(text, (text_x, text_y))
         for sprite in self.money_sprite_group.sprites():
             if sprite.rect.colliderect(player.rect):
-                money_sound = pygame.mixer.Sound('date/sounds/money.wav')
+                money_sound = pygame.mixer.Sound('data/sounds/money.wav')
                 money_sound.play(loops=0)
                 self.money_sprite_group.remove(sprite)
                 self.money_quantity -= 1
         if self.money_quantity == 0:
-            result_sound = pygame.mixer.Sound('date/sounds/result.wav')
+            result_sound = pygame.mixer.Sound('data/sounds/result.wav')
             result_sound.play(loops=0)
             return True
 
@@ -158,7 +158,7 @@ class Level:
 
         self.background_coordinate_x = -200
         self.background_coordinate_y = -200
-        self.background_image = pygame.image.load('date/images/space_image/space_background.jpg')
+        self.background_image = pygame.image.load('data/images/space_image/space_background.jpg')
         self.background_image = pygame.transform.scale(self.background_image, (
             self.background_image.get_width() * 3.3, self.background_image.get_height() * 2.3))
 

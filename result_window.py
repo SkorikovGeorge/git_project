@@ -9,15 +9,15 @@ class Result:
         self.background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.background.fill((0, 0, 75))
 
-        self.font = pygame.font.Font('letters.ttf', 50)
-        self.font1 = pygame.font.Font('letters.ttf', 100)
+        self.font = pygame.font.Font('data/letters.ttf', 50)
+        self.font1 = pygame.font.Font('data/letters.ttf', 100)
         self.text = self.font.render("RESULTS", True, 'yellow')
         self.text_w = self.text.get_width()
         self.text_h = self.text.get_height()
         self.text_x = SCREEN_WIDTH // 2 - self.text_w // 2
         self.text_y = SCREEN_HEIGHT // 5
 
-        back_button_image = pygame.image.load('date/images/button_images/back button.png')
+        back_button_image = pygame.image.load('data/images/button_images/back button.png')
         self.back_on_start_window_button = Button(SCREEN_WIDTH * 0.09, SCREEN_HEIGHT * 0.9, back_button_image, 0.9)
 
     def button(self):

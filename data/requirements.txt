@@ -1,0 +1,4 @@
+Модули:
+PyGame 2.1.0
+SYS
+Random

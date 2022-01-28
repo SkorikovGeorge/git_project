@@ -1,11 +1,11 @@
 import pygame, random
 from levels_info import tile_size
 
-garbage_image_1 = pygame.image.load('images/garbage_image/банка.png')
-garbage_image_2 = pygame.image.load('images/garbage_image/молоко.png')
-garbage_image_3 = pygame.image.load('images/garbage_image/банан.png')
-garbage_image_4 = pygame.image.load('images/garbage_image/мыло.png')
-garbage_image_5 = pygame.image.load('images/garbage_image/зеленый мешок.png')
+garbage_image_1 = pygame.image.load('date/images/garbage_image/банка.png')
+garbage_image_2 = pygame.image.load('date/images/garbage_image/молоко.png')
+garbage_image_3 = pygame.image.load('date/images/garbage_image/банан.png')
+garbage_image_4 = pygame.image.load('date/images/garbage_image/мыло.png')
+garbage_image_5 = pygame.image.load('date/images/garbage_image/зеленый мешок.png')
 garbage_images = [garbage_image_1, garbage_image_2, garbage_image_3, garbage_image_4, garbage_image_5]
 
 

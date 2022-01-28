@@ -17,7 +17,7 @@ class Result:
         self.text_x = SCREEN_WIDTH // 2 - self.text_w // 2
         self.text_y = SCREEN_HEIGHT // 5
 
-        back_button_image = pygame.image.load('images/button_images/back button.png')
+        back_button_image = pygame.image.load('date/images/button_images/back button.png')
         self.back_on_start_window_button = Button(SCREEN_WIDTH * 0.09, SCREEN_HEIGHT * 0.9, back_button_image, 0.9)
 
     def button(self):

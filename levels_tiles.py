@@ -1,11 +1,11 @@
 import pygame
 import random
 
-tile_image = pygame.image.load('images/tile_image/метеорит.png')
-tile_image_1 = pygame.image.load('images/tile_image/метеорит1.png')
-tile_image_2 = pygame.image.load('images/tile_image/метеорит2.png')
-tile_image_3 = pygame.image.load('images/tile_image/метеорит3.png')
-lava_tile_image = pygame.image.load('images/tile_image/горячий_метеорит.png')
+tile_image = pygame.image.load('date/images/tile_image/метеорит.png')
+tile_image_1 = pygame.image.load('date/images/tile_image/метеорит1.png')
+tile_image_2 = pygame.image.load('date/images/tile_image/метеорит2.png')
+tile_image_3 = pygame.image.load('date/images/tile_image/метеорит3.png')
+lava_tile_image = pygame.image.load('date/images/tile_image/горячий_метеорит.png')
 tile_images = [tile_image, tile_image_1, tile_image_2, tile_image_3]
 
 

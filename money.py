@@ -1,4 +1,6 @@
-import pygame, random
+import pygame
+import random
+
 from levels_info import tile_size
 
 # подгрузка изображений мусора

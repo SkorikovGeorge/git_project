@@ -14,7 +14,7 @@ class Start:
         self.text_w = self.text.get_width()
         self.text_h = self.text.get_height()
         self.text_x = SCREEN_WIDTH // 2 - self.text_w // 2
-        self.text_y = SCREEN_HEIGHT // 7
+        self.text_y = SCREEN_HEIGHT // 5
         # кнопка PLAY
         start_button_image = pygame.image.load('data/images/button_images/start button.png')
         self.start_button = Button(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, start_button_image, 1.25)
